@@ -87,7 +87,20 @@ class search {
         return unSortedList
     }
 
+    async insertionSort(unSortedList : number[]):Promise<number[]>{
+        for (let i = 1 ; i <unSortedList.length ; i++ ){
+            let key = unSortedList[i]
+            let j = i-1;
 
+            while (j >= 0 && unSortedList[j] > key){
+                let temp = unSortedList[j+1]
+                unSortedList[j+1] = unSortedList[j]
+                unSortedList[j] = temp;
+                j -= 1
+            }
+        }
+        return unSortedList
+    }
 
 
 
@@ -96,11 +109,12 @@ class search {
 
 
 
-// const algorithms = new search()
+const algorithms = new search()
 
 
-// algorithms.bubbleSort([9, 8, 5, 6, 3, 2, 1, 44, 5, 8, 99]).then((res) => {
-//     console.log(res)
-// }).catch((err) => {
-//     console.log(err)
-// })
+algorithms.insertionSort([9, 8, 5, 6, 3, 2, 1, 44, 5, 8, 99]).then((res) => {
+    console.log( 'sorted is . . .', res)
+}).catch((err) => {
+    console.log(err)
+})  
+ 
